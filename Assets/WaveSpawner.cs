@@ -44,9 +44,8 @@ public class WaveSpawner : MonoBehaviour
 	{
 		for (int i = 0; i < count; i++)
 		{
-			
-			
-			GameObject newEnemy = Instantiate(enemies[0], new Vector2(2, 2), Quaternion.identity);
+			Vector2 randomLoation = getRandomLocation(start, end);
+			GameObject newEnemy = Instantiate(enemies[0], randomLoation, Quaternion.identity);
             Destroy(newEnemy, 5f);
             yield return new WaitForSeconds(wait_time);
         }
@@ -57,6 +56,13 @@ public class WaveSpawner : MonoBehaviour
 		hasStarted = false;
 		StartCoroutine(StartDelay(wavesDelayTime));
 	}
-
-	
+	 
+	private Vector2 getRandomLocation(int start,int end)
+	{
+        int spawnX = Random.Range(start, end);
+        if (Random.Range(0, 2) == 1) spawnX *= -1;
+        int spawnY = Random.Range(start, end);
+        if (Random.Range(0, 2) == 1) spawnY *= -1;
+		return new Vector2(spawnX, spawnY);
+    }
 }
