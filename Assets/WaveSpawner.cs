@@ -12,6 +12,8 @@ public class WaveSpawner : MonoBehaviour
 	bool hasEnemyDeployed = false;
 	bool hasStarted = false;
 	public float enemySpawnDelay = 1f;
+	public float innerRadius = 2f;
+	public float outerRadius = 8f;
 	
 
 	public List<GameObject> enemies = new List<GameObject>();
@@ -37,10 +39,10 @@ public class WaveSpawner : MonoBehaviour
 		yield return new WaitForSeconds(time_in_sec);
 		hasStarted = true;
 		waveNumber++;
-        yield return SpawnEnemy(waveEnemyCount++, 2, 8, enemySpawnDelay);
+        yield return SpawnEnemy(waveEnemyCount++, innerRadius, outerRadius, enemySpawnDelay);
     }
 
-	private IEnumerator SpawnEnemy(int count,int start, int end,float wait_time = 0)
+	private IEnumerator SpawnEnemy(int count,float start, float end,float wait_time = 0)
 	{
 		for (int i = 0; i < count; i++)
 		{
@@ -57,11 +59,11 @@ public class WaveSpawner : MonoBehaviour
 		StartCoroutine(StartDelay(wavesDelayTime));
 	}
 	 
-	private Vector2 getRandomLocation(int start,int end)
+	private Vector2 getRandomLocation(float start,float end)
 	{
-        int spawnX = Random.Range(start, end);
+        float spawnX = Random.Range(start, end);
         if (Random.Range(0, 2) == 1) spawnX *= -1;
-        int spawnY = Random.Range(start, end);
+        float spawnY = Random.Range(start, end);
         if (Random.Range(0, 2) == 1) spawnY *= -1;
 		return new Vector2(spawnX, spawnY);
     }
