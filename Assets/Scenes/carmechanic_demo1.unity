@@ -1026,6 +1026,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39480747a92e4155ad360b84b94666d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveNumber: 0
+  waveEnemyCount: 10
+  startDelayTime: 0
+  wavesDelayTime: 10
+  enemySpawnDelay: 1
+  enemies:
+  - {fileID: 1919441615592139947, guid: 67d68d8e1369a4440bfb2807cd1b766a, type: 3}
+  - {fileID: 1919441615592139947, guid: 4bd1cc8ddc75f46699a4ce7b1566cc69, type: 3}
 --- !u!4 &1422589975
 Transform:
   m_ObjectHideFlags: 0
