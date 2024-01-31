@@ -44,6 +44,7 @@ public class CarController : MonoBehaviour
             // Moving
             MoveForce += (Vector2)(transform.up * MoveSpeed * Time.deltaTime);
             transform.position += new Vector3(MoveForce.x, MoveForce.y, 0) * Time.deltaTime;
+            MoveForce = Vector2.ClampMagnitude(MoveForce, MaxSpeed);
 
             // Steering
             float steerInput = Input.GetAxis("Horizontal");
@@ -57,6 +58,7 @@ public class CarController : MonoBehaviour
             Debug.DrawRay(transform.position, MoveForce.normalized * 3);
             Debug.DrawRay(transform.position, transform.up * 3, Color.blue);
             MoveForce = Vector2.Lerp(MoveForce.normalized, transform.up, Traction * Time.deltaTime) * MoveForce.magnitude;
+
         }
         
     }

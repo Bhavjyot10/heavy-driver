@@ -641,6 +641,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8941732248047006927, guid: 78681df10d643e84e9f0b5e64f2f5201, type: 3}
+      propertyPath: MaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941732248047006927, guid: 78681df10d643e84e9f0b5e64f2f5201, type: 3}
       propertyPath: VirtualCamera
       value: 
       objectReference: {fileID: 345697653}

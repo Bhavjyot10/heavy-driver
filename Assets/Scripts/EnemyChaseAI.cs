@@ -6,6 +6,7 @@ public class EnemyChaseAI : MonoBehaviour
     public float rotationSpeed = 2f;
     public float traction = 1f;
     public float drag = 0.98f;
+    public float maxForceMagnitude = 10f; // Adjust this value as needed
 
     private Transform player;
     private Vector2 moveForce;
@@ -39,6 +40,10 @@ public class EnemyChaseAI : MonoBehaviour
     {
         // Move in the forward direction of the enemy
         moveForce += (Vector2)(transform.up * speed * Time.deltaTime);
+
+        // Clamp the magnitude of moveForce to prevent excessive accumulation
+        moveForce = Vector2.ClampMagnitude(moveForce, maxForceMagnitude);
+
         transform.position += new Vector3(moveForce.x, moveForce.y, 0) * Time.deltaTime;
 
         // Traction - adjust the enemy's direction gradually towards the desired direction
