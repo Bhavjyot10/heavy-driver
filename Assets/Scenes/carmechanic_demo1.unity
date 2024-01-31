@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &83274929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1300671855046974163, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_Name
+      value: Enemy_beg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083866773270229978, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: speed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083866773270229978, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: maxDelta
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083866773270229978, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: minDelta
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861865403104010181, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df4928edb2e770c46ae3835d7e6c3977, type: 3}
 --- !u!1 &125506537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1422589974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,7 +1134,7 @@ GameObject:
   - component: {fileID: 1593833876}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1158,6 +1227,7 @@ MonoBehaviour:
   Drag: 0.988
   SteerAngle: 27.5
   Traction: 1
+  StartCar: 0
   VirtualCamera: {fileID: 345697653}
   orthoSizeIncreaseSpeed: 2
   targetOrthoSize: 16
@@ -1394,3 +1464,4 @@ SceneRoots:
   - {fileID: 1142882720}
   - {fileID: 345697654}
   - {fileID: 1422589975}
+  - {fileID: 83274929}

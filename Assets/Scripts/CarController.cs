@@ -15,8 +15,8 @@ public class CarController : MonoBehaviour
     public float Traction = 1f;
 
     // Variables
-    private Vector2 MoveForce;
-    private bool StartCar;
+    private Vector3 MoveForce;
+    public bool StartCar;
     private float originalFrequency = 1f; // Store the original noise amplitude
 
     public CinemachineVirtualCamera VirtualCamera;
@@ -42,8 +42,8 @@ public class CarController : MonoBehaviour
             DollyCamera();
 
             // Moving
-            MoveForce += (Vector2)(transform.up * MoveSpeed * Time.deltaTime);
-            transform.position += new Vector3(MoveForce.x, MoveForce.y, 0) * Time.deltaTime;
+            MoveForce += (transform.up * MoveSpeed * Time.deltaTime);
+            transform.position += MoveForce * Time.deltaTime;
 
             // Steering
             float steerInput = Input.GetAxis("Horizontal");
