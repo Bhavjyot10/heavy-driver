@@ -37,10 +37,10 @@ public class WaveSpawner : MonoBehaviour
 	{
 		Debug.Log(waveNumber);
 
-		if(GameObject.FindWithTag("Enemy") == null && hasWaveStarted)
-		{
-			EndWave();
-		}
+		//if(GameObject.FindWithTag("Enemy") == null && hasWaveStarted)
+		//{
+			//EndWave();
+		//}
 		
     }
 
@@ -60,15 +60,16 @@ public class WaveSpawner : MonoBehaviour
 			float yPos = Random.Range(0, 2) == 0 ? Random.Range(-outerRadius, -innerRadius) : Random.Range(innerRadius, outerRadius);
 			Vector3 enemyPosOffset = new Vector2(xPos, yPos);
 			GameObject newEnemy = Instantiate(enemies[0], Car.transform.position + enemyPosOffset, Quaternion.identity);
-			Destroy(newEnemy, 5f);
+			//Destroy(newEnemy, 5f);
 			enemyCount--;
 			yield return null;
 		}
+		EndWave();
     }
 
 	private void EndWave()
 	{
-		hasWaveStarted = false;
+		//hasWaveStarted = false;
         waveEnemyCount += 1;
         StartCoroutine(StartDelay(wavesDelayTime));
 	}
