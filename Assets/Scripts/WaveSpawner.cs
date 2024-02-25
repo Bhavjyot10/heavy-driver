@@ -13,7 +13,6 @@ public class WaveSpawner : MonoBehaviour
 	public float startDelayTime = 5f;
 	public float wavesDelayTime = 10f;
 	
-	bool hasWaveStarted = false;
 	public float enemySpawnDelay = 1f;
 
 	public float innerRadius = 2f;
@@ -47,7 +46,6 @@ public class WaveSpawner : MonoBehaviour
 	private IEnumerator StartDelay(float time_in_sec)
 	{
 		yield return new WaitForSeconds(time_in_sec);
-		hasWaveStarted = true;
 		waveNumber+=1;		
 		enemyCount = waveEnemyCount;
 		OnWaveStart?.Invoke();
