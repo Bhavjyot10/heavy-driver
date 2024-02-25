@@ -17,7 +17,10 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     public Transform RayCastPt;
     private float currentSpeed = 0f;
-    
+    public float repulsionRadius = 2f; // Radius within which enemies repel each other
+    public float repulsionForce = 10f; // Force with which enemies repel each other
+
+
     void Start()
     {
         car = GameObject.FindWithTag("Player").transform;
@@ -29,25 +32,12 @@ public class EnemyAI : MonoBehaviour
         
             if (car != null)
             {
+
+            AvoidOverlap();
            // Debug.Log(Vector2.Distance(transform.position,GameObject.FindWithTag("Enemy").transform.position));
             Vector2 directionToPlayer = car.position - transform.position;
 
-            // Avoid obstacles
-            RaycastHit2D hit = Physics2D.Raycast(RayCastPt.position, directionToPlayer.normalized, avoidanceDistance, obstacleLayer);
-            if (hit.collider != null)
-            {
-                Debug.Log(hit.distance); // Log the name of the obstacle only if it's within avoidance distance
-
-                // Calculate avoidance direction
-                Vector2 avoidanceDirection = Vector2.Perpendicular(hit.normal).normalized;
-
-                // Calculate avoidance force based on distance to obstacle
-                float avoidanceStrength = Mathf.Clamp01(1f - (hit.distance / avoidanceDistance)); // Strength of avoidance force based on distance
-                Vector2 avoidanceForceVector = avoidanceDirection * avoidanceForce * avoidanceStrength;
-
-                // Apply avoidance force to the enemy's velocity
-                rb.velocity += avoidanceForceVector * Time.fixedDeltaTime;
-            }
+            
 
             directionToPlayer.Normalize(); // Normalize direction after obstacle avoidance
 
@@ -80,5 +70,23 @@ public class EnemyAI : MonoBehaviour
 
         }
        
+    }
+
+    void AvoidOverlap()
+    {
+        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, repulsionRadius);
+        foreach (Collider2D enemyCollider in nearbyEnemies)
+        {
+            if (enemyCollider.gameObject != gameObject && enemyCollider.CompareTag("Enemy"))
+            {
+                Vector3 repulsionDirection = transform.position - enemyCollider.transform.position;
+                Rigidbody2D enemyRigidbody = enemyCollider.GetComponent<Rigidbody2D>();
+
+                if (enemyRigidbody != null)
+                {
+                    enemyRigidbody.AddForce(repulsionDirection.normalized * repulsionForce, ForceMode2D.Force);
+                }
+            }
+        }
     }
 }
